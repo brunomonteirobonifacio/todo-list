@@ -13,7 +13,7 @@ export async function createList(app: FastifyInstance) {
         })
       }
     },
-    async (request, reply) => {
+    async (request) => {
       const { owner_name, owner_email } = request.body
 
       const list = await prisma.list.create({

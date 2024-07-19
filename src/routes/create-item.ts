@@ -15,7 +15,7 @@ export async function createItem(app: FastifyInstance) {
         })
       }
     },
-    async (request, reply) => {
+    async (request) => {
       const { title } = request.body
       const { listId } = request.params
 

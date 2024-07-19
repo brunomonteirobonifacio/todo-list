@@ -17,7 +17,7 @@ export async function updateItem(app: FastifyInstance) {
         })
       }
     },
-    async (request, reply) => {
+    async (request) => {
       const { title, done } = request.body
       const { listId, itemId } = request.params
 

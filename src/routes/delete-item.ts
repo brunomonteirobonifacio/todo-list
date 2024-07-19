@@ -13,7 +13,7 @@ export async function deleteItem(app: FastifyInstance) {
         }),
       }
     },
-    async (request, reply) => {
+    async (request) => {
       const { listId, itemId } = request.params
 
       const item = await prisma.item.findUnique({

@@ -12,7 +12,7 @@ export async function deleteList(app: FastifyInstance) {
         }),
       }
     },
-    async (request, reply) => {
+    async (request) => {
       const { listId } = request.params
 
       const list = await prisma.list.findUnique({
