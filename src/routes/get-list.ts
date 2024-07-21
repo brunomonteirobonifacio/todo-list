@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod"
 import { z } from "zod"
 import { prisma } from "../lib/prisma.js";
+import { ClientError } from "../error/client-error.js";
 
 export async function getList(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(
@@ -25,7 +26,7 @@ export async function getList(app: FastifyInstance) {
       })
 
       if (!list) {
-        throw new Error('List not found.')
+        throw new ClientError('List not found.')
       }
 
       return { list }

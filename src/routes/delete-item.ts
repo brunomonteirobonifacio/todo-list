@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { prisma } from "../lib/prisma.js";
 import { z } from "zod";
+import { ClientError } from "../error/client-error.js";
 
 export async function deleteItem(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().delete(
@@ -24,7 +25,7 @@ export async function deleteItem(app: FastifyInstance) {
       })
 
       if (!item) {
-        throw new Error('Item not found.')
+        throw new ClientError('Item not found.')
       }
 
       await prisma.item.delete({
